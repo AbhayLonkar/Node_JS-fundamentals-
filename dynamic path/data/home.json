@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "title": "Rental House",
+    "price": "899",
+    "rating": "3"
+  },
+  {
+    "id": "2",
+    "title": "Sakshi House",
+    "price": "2999",
+    "rating": "5",
+    "photoUrl": "sasdlkjfaoiewjr"
+  },
+  {
+    "id": "3",
+    "title": "Mental House",
+    "price": "1099",
+    "rating": "1",
+    "photoUrl": "ausodfhalsjdfna"
+  },
+  {
+    "id": "4",
+    "title": "Lonkar House",
+    "price": "199",
+    "rating": "3",
+    "photoUrl": "ausodfhalsjdfna"
+  }
+]

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Poppins, 'sans-serif';
+    }
+
+    .home {
+      height: 100dvh;
+      width: 100dvw;
+      background: linear-gradient(to right, rgb(12, 77, 206), rgb(0, 187, 255));
+      display: flex;
+      gap: 5px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      border: 1px solid black;
+      max-width: 30rem;
+      min-width: 23rem;
+      border-radius: 30px;
+      box-shadow: 2px 2px 5px black;
+    }
+
+    input {
+      padding: 8px;
+      border-radius: 20px;
+      outline: none;
+      border: none;
+    }
+
+    .btn {
+      width: 100px;
+      border: none;
+      text-transform: uppercase;
+      transition: all ease .3s;
+
+      &:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+        box-shadow: 2px 2px 5px black;
+      }
+    }
+
+    .anchor {
+      color: black;
+      text-underline-offset: 5px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="home">
+    <h1>Please fill the below form</h1>
+    <form method="post" action="/contact-us">
+      <label for="Name">Name:</label> <input type="text" name="username" id="Name" placeholder="Enter your name"
+        required> <br> <br>
+      <label for="Email">Email:</label> <input type="email" name="mail" id="Email" placeholder="Enter your mail"
+        required> <br> <br>
+      <input type="submit" value="submit" class="btn">
+    </form>
+    <a href="/" class="anchor">Go Back</a>
+  </div>
+</body>
+
+</html>

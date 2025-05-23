@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Home</title>
+  <link rel="stylesheet" href="/output.css">
+</head>
+
+<body class="h-dvh bg-gray-50">
+  <nav class="bg-gradient-to-r from-blue-500 to-blue-600 shadow shadow-gray-400 p-2 px-10 transition-all duration-300">
+    <ul class="flex gap-5 md:ml-10">
+      <li class="bg-white/40 hover:cursor-pointer px-3 h-9 flex items-center rounded-lg">
+        <a href="/">Home</a>
+      </li>
+      <li class="hover:cursor-pointer hover:bg-white/40 px-3 h-9 flex items-center rounded-lg">
+        <a href="/add-home">Add Home</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="flex justify-center items-center flex-col mt-20 w-full p-5 pb-10 ">
+    <h1 class="text-2xl text-blue-600 font-bold mb-5 w-full text-center uppercase">This is your selected Home</h1>
+
+    <div class="shadow shadow-gray-500 h-max p-3  flex gap-3 justify-center rounded-lg flex-wrap w-[400px]">
+      <div>
+        <img src="/bg.png" alt="house image" class="w-full  h-60 object-cover rounded-lg">
+      </div>
+      <div class="font-semibold w-full">
+        <p class="text-xl">
+          <%= house.title %>
+        </p>
+        <div class="flex justify-between items-center w-full">
+          <p class="text-xl text-green-600 ">
+            Rs.<%= house.price %>
+          </p>
+          <p
+            class="text-xs font-bold flex justify-center items-center text-white bg-gradient-to-r from-blue-500 to-blue-600 rounded-full p-2 size-2">
+            <%= house.rating %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
