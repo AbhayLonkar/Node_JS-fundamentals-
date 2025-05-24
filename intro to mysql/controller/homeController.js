@@ -16,7 +16,6 @@ exports.getAddHome = (req, res, next) => {
 
 exports.postAddHome = (req, res, next) => {
   const { title, price, rating, photoUrl } = req.body;
-  console.log(title, price, rating, photoUrl);
   let home = new Home(title, price, rating, photoUrl);
   home.save().then(result => {
     res.render("addHomeSuccess", { tab: 'addHome' });

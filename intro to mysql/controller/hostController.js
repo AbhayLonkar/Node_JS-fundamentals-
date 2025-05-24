@@ -9,7 +9,6 @@ exports.getHome = (req, res, next) => {
 
 exports.postEditHome = (req, res, next) => {
   const id = req.body.favId;
-  console.log(req.query);
   Home.fetchOne(id).then(([house]) => {
     res.render('./host/editHome', { house: house[0], tab: "editHome" });
   })
@@ -27,21 +26,12 @@ exports.postDeleteHome = (req, res, next) => {
 }
 
 exports.postEditHomeSuccess = (req, res, next) => {
-  console.log(req.body);
-  Home.fetchAll().then(([allHouse]) => {
-    allHouse.map(house => {
-      if (house.id === req.body.id) {
-        house.title = req.body.title;
-        house.price = req.body.price;
-        house.rating = req.body.rating;
-        house.photoUrl = req.body.photoUrl;
-      }
+  const data = req.body;
+  Home.update(data.id, data)
+    .then(() => {
+      res.render('./host/editHomeSuccess', { tab: "addHome" });
     })
-    Home.sudoSave(JSON.stringify(allHouse), err => {
-      if (err) console.log(err);
-      else {
-        res.render('./host/editHomeSuccess', { tab: "addHome" });
-      }
+    .catch(err => {
+      console.log('error occured while updating: ', err);
     })
-  })
 }
