@@ -18,7 +18,7 @@
         <% if (registeredHouses && registeredHouses.length>0) { %>
           <% registeredHouses.forEach(house=> { %>
             <div class="shadow shadow-black p-2 w-60 text-gray-600 rounded-lg  hover:cursor-pointer">
-              <img src="/bg.png" class="w-full rounded-lg" alt="<%= house.title %>">
+              <img src="<%= house.photoUrl %>" class="w-full h-52 object-cover rounded-lg" alt="<%= house.title %>">
               <p>
                 <%= house.title %>
               </p>

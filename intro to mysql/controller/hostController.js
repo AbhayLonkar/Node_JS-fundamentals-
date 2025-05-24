@@ -10,19 +10,20 @@ exports.getHome = (req, res, next) => {
 exports.postEditHome = (req, res, next) => {
   const id = req.body.favId;
   console.log(req.query);
-  Home.fetchOne(id).then(house => {
-    res.render('./host/editHome', { house, tab: "editHome" });
+  Home.fetchOne(id).then(([house]) => {
+    res.render('./host/editHome', { house: house[0], tab: "editHome" });
   })
 }
 
 exports.postDeleteHome = (req, res, next) => {
   const id = req.body.id;
-  Home.deleteById(id, err => {
-    if (err) {
-      console.log('err while deleteing', err);
-    }
-    res.redirect('/editHome')
-  })
+  Home.deleteById(id)
+    .then(() => {
+      res.redirect('/editHome')
+    })
+    .catch(err => {
+      console.log('error occured: ', err)
+    })
 }
 
 exports.postEditHomeSuccess = (req, res, next) => {
