@@ -34,14 +34,14 @@
 
               <div class="flex justify-between items-center text-white mt-2">
                 <form action="/host/editHome?editing=true" method="post">
-                  <input type="hidden" value="<%= house.id%>" name="favId">
+                  <input type="hidden" value="<%= house._id%>" name="favId">
                   <button type="submit"
                     class="bg-blue-700 rounded-lg p-2 hover:cursor-pointer hover:opacity-80 transition-all duration-300">
                     Edit Home
                   </button>
                 </form>
                 <form action="/host/deleteHome" method="post">
-                  <input type="hidden" value="<%= house.id%>" name="id">
+                  <input type="hidden" value="<%= house._id%>" name="id">
                   <button type="submit" class="rounded-lg p-2 bg-red-600 hover:cursor-pointer">
                     Delete
                   </button>

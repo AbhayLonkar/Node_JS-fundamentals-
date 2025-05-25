@@ -25,9 +25,8 @@ exports.postAddHome = (req, res, next) => {
 
 exports.getHome = (req, res, next) => {
   Home.fetchOne(req.params.homeId).then(house => {
-    console.log(house);
     if (house) {
-      res.render("selectedHome", { house: house[0], tab: 'home' });
+      res.render("selectedHome", { house: house, tab: 'home' });
     } else {
       res.render("404", { tab: 'home' })
     }

@@ -25,10 +25,12 @@ module.exports = class Home {
 
   static fetchOne(homeId) {
     const db = getDb();
-    return db.collection('homes').find({ _id: new ObjectId(homeId).toString() }).next();
+    return db.collection('homes').find({ _id: new ObjectId(String(homeId)) }).next();
   }
 
   static deleteById(id) {
+    const db = getDb();
+    return db.collection('homes').deleteOne({ _id: new ObjectId(String(id)) });
   }
 
 }
