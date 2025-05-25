@@ -1,7 +1,7 @@
 const Home = require("../model/home")
 
 exports.getHome = (req, res, next) => {
-  Home.fetchAll().then(([registeredHouses]) => {
+  Home.fetchAll().then(registeredHouses => {
     res.render('./host/home', { registeredHouses, tab: "editHome" });
   })
 }
@@ -9,7 +9,7 @@ exports.getHome = (req, res, next) => {
 
 exports.postEditHome = (req, res, next) => {
   const id = req.body.favId;
-  Home.fetchOne(id).then(([house]) => {
+  Home.fetchOne(id).then(house => {
     res.render('./host/editHome', { house: house[0], tab: "editHome" });
   })
 }

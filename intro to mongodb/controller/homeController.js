@@ -2,7 +2,7 @@ const Home = require("../model/home");
 
 
 exports.initalReq = (req, res, next) => {
-  Home.fetchAll().then(([registeredHouses]) => {
+  Home.fetchAll().then(registeredHouses => {
     res.render("home", {
       registeredHouses: registeredHouses,
       tab: 'home'
@@ -24,7 +24,8 @@ exports.postAddHome = (req, res, next) => {
 };
 
 exports.getHome = (req, res, next) => {
-  Home.fetchOne(req.params.homeId).then(([house]) => {
+  Home.fetchOne(req.params.homeId).then(house => {
+    console.log(house);
     if (house) {
       res.render("selectedHome", { house: house[0], tab: 'home' });
     } else {
@@ -34,7 +35,7 @@ exports.getHome = (req, res, next) => {
 }
 
 exports.getEditHome = (req, res, next) => {
-  Home.fetchAll().then(([registeredHouses]) => {
+  Home.fetchAll().then(registeredHouses => {
     res.render("home", {
       registeredHouses: registeredHouses,
       tab: 'editHome'

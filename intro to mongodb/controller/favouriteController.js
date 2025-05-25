@@ -3,7 +3,7 @@ const Home = require("../model/home");
 
 exports.getFav = (req, res, next) => {
   Favourite.fetchAll(favHouses => {
-    Home.fetchAll().then(([registeredHouses]) => {
+    Home.fetchAll().then(registeredHouses => {
       const newList = registeredHouses.filter(house => favHouses.includes(house.id));
       res.render('fav', { newList });
     })

@@ -1,8 +1,9 @@
 const mongo = require('mongodb');
+const { mongoUri } = require("./mongouri")
 
 const MongoClient = mongo.MongoClient;
 
-const mongo_uri = "mongodb+srv://root:root@completecoding.qladk1e.mongodb.net/?retryWrites=true&w=majority&appName=CompleteCoding";
+const mongo_uri = mongoUri;
 
 let _db;
 
