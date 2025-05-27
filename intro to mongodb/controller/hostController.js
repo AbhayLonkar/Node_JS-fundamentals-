@@ -8,9 +8,9 @@ exports.getHome = (req, res, next) => {
 
 
 exports.postEditHome = (req, res, next) => {
-  const id = req.body.favId;
+  const id = req.body.id;
   Home.fetchOne(id).then(house => {
-    res.render('./host/editHome', { house: house[0], tab: "editHome" });
+    res.render('./host/editHome', { house: house, tab: "editHome" });
   })
 }
 

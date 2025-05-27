@@ -16,7 +16,7 @@
 
       <form method="post" action="/host/editHomeSuccess"
         class="shadow md:w-3xl w-full  h-max p-3 flex flex-col gap-2 items-center rounded-lg">
-        <input type="hidden" name="id" value="<%= house.id %>">
+        <input type="hidden" name="id" value="<%= house._id %>">
         <input type="text" placeholder="Enter your house title here"
           class="w-4/5 p-2 rounded-full border-2 border-blue-600 outline-0 shadow" name="title"
           value="<%= house.title %>">
