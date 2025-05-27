@@ -16,6 +16,14 @@ module.exports = class Home {
   }
 
   static update(id, data) {
+    const db = getDb();
+    const updatedData = {
+      title: data.title,
+      price: data.price,
+      rating: data.rating,
+      photoUrl: data.photoUrl
+    }
+    return db.collection('homes').updateOne({ _id: new ObjectId(String(id)) }, { $set: updatedData })
   }
 
   static fetchAll() {

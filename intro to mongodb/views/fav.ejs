@@ -18,7 +18,7 @@
         <% if (newList && newList.length>0) { %>
           <% newList.forEach(house=> { %>
             <div class="shadow shadow-black p-2 w-60 text-gray-600 rounded-lg  hover:cursor-pointer">
-              <img src="<%= house.photoUrl %>" class="w-full rounded-lg" alt="<%= house.title %>">
+              <img src="<%= house.photoUrl %>" class="w-full h-54 object-cover rounded-lg" alt="<%= house.title %>">
               <p>
                 <%= house.title %>
               </p>
@@ -33,15 +33,14 @@
               </div>
 
               <div class="flex justify-between items-center text-white mt-2">
-                <form action="" method="post">
-                  <input type="hidden" value="<%= house.id%>" name="id">
-                  <button type="submit"
-                    class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-2 hover:cursor-pointer hover:opacity-80 transition-all duration-300">
+                <button
+                  class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-2 hover:cursor-pointer hover:opacity-80 transition-all duration-300">
+                  <a href="/home/<%= house._id %>">
                     View
-                  </button>
-                </form>
+                  </a>
+                </button>
                 <form action="/favDelete" method="post">
-                  <input type="hidden" value="<%= house.id%>" name="id">
+                  <input type="hidden" value="<%= house._id%>" name="id">
                   <button class="ring-2 rounded-lg p-1 px-2 text-blue-600 hover:cursor-pointer">
                     Remove Favourite
                   </button>
