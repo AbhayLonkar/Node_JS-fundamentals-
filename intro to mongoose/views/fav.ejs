@@ -18,7 +18,8 @@
         <% if (newList && newList.length>0) { %>
           <% newList.forEach(house=> { %>
             <div class="shadow shadow-black p-2 w-60 text-gray-600 rounded-lg  hover:cursor-pointer">
-              <img src="<%= house.photoUrl %>" class="w-full h-54 object-cover rounded-lg" alt="<%= house.title %>">
+              <img src="<%= house.photoUrl %>" class="w-full h-54 object-cover rounded-lg"
+                alt="<%= house.title %> Image">
               <p>
                 <%= house.title %>
               </p>

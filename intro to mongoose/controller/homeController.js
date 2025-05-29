@@ -2,7 +2,7 @@ const Home = require("../model/home");
 
 
 exports.initalReq = (req, res, next) => {
-  Home.fetchAll().then(registeredHouses => {
+  Home.find().then(registeredHouses => {
     res.render("home", {
       registeredHouses: registeredHouses,
       tab: 'home'
@@ -16,15 +16,14 @@ exports.getAddHome = (req, res, next) => {
 
 exports.postAddHome = (req, res, next) => {
   const { title, price, rating, photoUrl } = req.body;
-  let home = new Home(title, price, rating, photoUrl);
+  let home = new Home({ title, price, rating, photoUrl });
   home.save().then(() => {
-    console.log('home saved successfully')
     res.render("addHomeSuccess", { tab: 'addHome' });
   })
 };
 
 exports.getHome = (req, res, next) => {
-  Home.fetchOne(req.params.homeId).then(house => {
+  Home.findById(req.params.homeId).then(house => {
     if (house) {
       res.render("selectedHome", { house: house, tab: 'home' });
     } else {
@@ -34,7 +33,7 @@ exports.getHome = (req, res, next) => {
 }
 
 exports.getEditHome = (req, res, next) => {
-  Home.fetchAll().then(registeredHouses => {
+  Home.find().then(registeredHouses => {
     res.render("home", {
       registeredHouses: registeredHouses,
       tab: 'editHome'

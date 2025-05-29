@@ -3,34 +3,36 @@ const Favourite = require("../model/favourite");
 const Home = require("../model/home");
 
 exports.getFav = (req, res, next) => {
-  Favourite.fetchAll()
+  Favourite.find()
+    .populate('homeId')
     .then(favHouses => {
-      favHouses = favHouses.map(fav => fav.homeId)
-      Home.fetchAll()
-        .then(registeredHouses => {
-          const newList = registeredHouses.filter(house => favHouses.includes(house._id.toString()));
-          res.render('fav', { newList });
-        })
-    });
+      const favouriteHomes = favHouses.map(fav => fav.homeId);
+      console.log(favouriteHomes);
+      res.render('fav', { newList: favouriteHomes });
+    })
 }
 
 exports.postFav = (req, res, next) => {
-  let fav = new Favourite(req.body.favId);
-  fav.save()
-    .then(() => {
-      console.log('saved')
-    })
-    .catch(err => {
-      console.log(err)
-    })
-    .finally(() => {
-      res.redirect('/fav')
+  Favourite.findOne({ homeId: req.body.favId })
+    .then(existingFav => {
+      if (existingFav) {
+        console.log('House already in favourites');
+        res.redirect('/fav')
+      }
+      const fav = new Favourite({ homeId: req.body.favId });
+      fav.save()
+        .then(() => {
+          res.redirect('/fav')
+        })
+        .catch(err => {
+          console.log("something went wrong when adding to favourite", err)
+        })
     })
 }
 
 exports.postFavDelete = (req, res, next) => {
   const id = req.body.id;
-  Favourite.deleteById(id)
+  Favourite.findOneAndDelete(id)
     .then(() => {
       res.redirect('/fav');
     })
