@@ -1,0 +1,20 @@
+<nav class="bg-gradient-to-r from-blue-500 to-blue-600 shadow shadow-gray-400 p-2 px-10 transition-all duration-300">
+  <ul class="flex gap-5 md:ml-10 font-semibold">
+    <li
+      class="<%= tab === 'home' ? 'bg-white/40' : '' %> hover:bg-white/40 hover:cursor-pointer px-3 h-9 flex items-center rounded-lg">
+      <a href="/">Home</a>
+    </li>
+    <li
+      class="<%= tab === 'addHome' ? 'bg-white/40' : '' %> hover:bg-white/40 hover:cursor-pointer px-3 h-9 flex items-center rounded-lg">
+      <a href="/add-home">Add Home</a>
+    </li>
+    <li
+      class="<%= tab === 'fav' ? 'bg-white/40' : '' %> hover:bg-white/40 hover:cursor-pointer px-3 h-9 flex items-center rounded-lg">
+      <a href="/fav">Favorites</a>
+    </li>
+    <li
+      class="<%= tab === 'editHome' ? 'bg-white/40' : '' %> hover:bg-white/40 hover:cursor-pointer px-3 h-9 flex items-center rounded-lg">
+      <a href="/editHome">Edit Home</a>
+    </li>
+  </ul>
+</nav>
