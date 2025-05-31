@@ -2,8 +2,11 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const Routes = require('./routes/homeRoute');
+
 const { favouriteRoute } = require('./routes/favouriteRoute');
 const { hostRoute } = require('./routes/hostRoute');
+const { authRoute } = require('./routes/authRoute');
+
 const { mongoose } = require('mongoose');
 const { mongoUri } = require('./utils/mongouri');
 
@@ -16,8 +19,10 @@ app.use(express.urlencoded());
 app.use(Routes.homeRoute);
 app.use(favouriteRoute);
 app.use(hostRoute);
+app.use(authRoute);
 
 app.use((req, res, next) => {
+  res.status(404);
   res.render("404.ejs", { tab: 'error' });
 });
 
