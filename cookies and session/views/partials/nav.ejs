@@ -4,21 +4,23 @@
       class="<%= tab === 'home' ? 'bg-white/40' : '' %> hover:bg-white/40 hover:cursor-pointer px-3 h-9 flex items-center rounded-lg">
       <a href="/">Home</a>
     </li>
-    <li
-      class="<%= tab === 'addHome' ? 'bg-white/40' : '' %> hover:bg-white/40 hover:cursor-pointer px-3 h-9 flex items-center rounded-lg">
-      <a href="/add-home">Add Home</a>
-    </li>
-    <li
-      class="<%= tab === 'fav' ? 'bg-white/40' : '' %> hover:bg-white/40 hover:cursor-pointer px-3 h-9 flex items-center rounded-lg">
-      <a href="/fav">Favorites</a>
-    </li>
-    <li
-      class="<%= tab === 'editHome' ? 'bg-white/40' : '' %> hover:bg-white/40 hover:cursor-pointer px-3 h-9 flex items-center rounded-lg">
-      <a href="/editHome">Edit Home</a>
-    </li>
-    <li
-      class="<%= tab === 'login' ? 'bg-white/40' : '' %> hover:bg-white/40 hover:cursor-pointer px-3 h-9 flex items-center rounded-lg">
-      <a href="/login">Login</a>
-    </li>
+    <% if(isLoggedIn) { %>
+      <li
+        class="<%= tab === 'addHome' ? 'bg-white/40' : '' %> hover:bg-white/40 hover:cursor-pointer px-3 h-9 flex items-center rounded-lg">
+        <a href="/add-home">Add Home</a>
+      </li>
+      <li
+        class="<%= tab === 'fav' ? 'bg-white/40' : '' %> hover:bg-white/40 hover:cursor-pointer px-3 h-9 flex items-center rounded-lg">
+        <a href="/fav">Favorites</a>
+      </li>
+      <li
+        class="<%= tab === 'editHome' ? 'bg-white/40' : '' %> hover:bg-white/40 hover:cursor-pointer px-3 h-9 flex items-center rounded-lg">
+        <a href="/host/editHome">Edit Home</a>
+      </li>
+      <% } %>
+        <li
+          class="<%= tab === 'login' ? 'bg-white/40' : '' %> hover:bg-white/40 hover:cursor-pointer px-3 h-9 flex items-center rounded-lg">
+          <a href="/login">Login</a>
+        </li>
   </ul>
 </nav>

@@ -7,7 +7,7 @@ exports.getFav = (req, res, next) => {
     .populate('homeId')
     .then(favHouses => {
       const favouriteHomes = favHouses.map(fav => fav.homeId);
-      res.render('fav', { newList: favouriteHomes });
+      res.render('fav', { newList: favouriteHomes, isLoggedIn: req.isLoggedIn });
     })
 }
 

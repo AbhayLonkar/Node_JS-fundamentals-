@@ -16,14 +16,29 @@ app.set('views', 'views');
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded());
 
+
+app.use((req, res, next) => {
+  console.log('cookie check middleware', req.get('Cookie'));
+  console.log(req)
+  next();
+})
+
 app.use(Routes.homeRoute);
 app.use(favouriteRoute);
+app.use('/host', (req, res, next) => {
+  if (req.isLoggedIn) {
+    next();
+  } else {
+    res.redirect('/login')
+  }
+});
 app.use(hostRoute);
 app.use(authRoute);
 
+
 app.use((req, res, next) => {
   res.status(404);
-  res.render("404.ejs", { tab: 'error' });
+  res.render("404.ejs", { tab: 'error', isLoggedIn: req.isLoggedIn });
 });
 
 mongoose.connect(mongoUri)
