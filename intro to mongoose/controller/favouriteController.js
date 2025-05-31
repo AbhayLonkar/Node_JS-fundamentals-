@@ -7,7 +7,6 @@ exports.getFav = (req, res, next) => {
     .populate('homeId')
     .then(favHouses => {
       const favouriteHomes = favHouses.map(fav => fav.homeId);
-      console.log(favouriteHomes);
       res.render('fav', { newList: favouriteHomes });
     })
 }

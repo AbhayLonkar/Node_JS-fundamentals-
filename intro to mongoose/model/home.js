@@ -20,10 +20,9 @@ const homeSchema = new mongoose.Schema({
   }
 });
 
-homeSchema.pre('findByIdAndDelete', async function (next) {
-  const homeId = this.getQuery._id;
-  console.log("homeId", homeId)
-  await Favourite.deleteMany({ homeId });
+homeSchema.pre('findOneAndDelete', async function (next) {
+  const homeId = this.getQuery()._id;
+  await Favourite.deleteOne({ homeId });
   next();
 });
 
