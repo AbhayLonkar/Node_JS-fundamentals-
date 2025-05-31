@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Home</title>
+  <link rel="stylesheet" href="/output.css">
+</head>
+
+<body>
+  <%- include('../partials/nav.ejs', {tab}) %>
+    <div class="flex justify-center items-center flex-col mt-20">
+
+      <h1 class="text-2xl text-blue-600 font-bold">Edit your house here</h1>
+
+      <form method="post" action="/host/editHomeSuccess"
+        class="shadow md:w-3xl w-full  h-max p-3 flex flex-col gap-2 items-center rounded-lg">
+        <input type="hidden" name="id" value="<%= house._id %>">
+        <input type="text" placeholder="Enter your house title here"
+          class="w-4/5 p-2 rounded-full border-2 border-blue-600 outline-0 shadow" name="title"
+          value="<%= house.title %>">
+        <input type="number" placeholder="Enter price per day"
+          class="w-4/5 p-2 rounded-full border-2 border-blue-600 outline-0 shadow" name="price"
+          value="<%= house.price %>">
+        <input type="number" placeholder="Enter rating of your house"
+          class="w-4/5 p-2 rounded-full border-2 border-blue-600 outline-0 shadow" name="rating"
+          value="<%= house.rating %>">
+        <input type="text" placeholder="Enter your house image url"
+          class="w-4/5 p-2 rounded-full border-2 border-blue-600 outline-0 shadow" name="photoUrl"
+          value="<%= house.photoUrl %>">
+        <input type="submit" value="update"
+          class="p-2 px-5 rounded-full text-white uppercase bg-gradient-to-r from-blue-500 to-blue-600 shadow shadow-gray-400 hover:cursor-pointer hover:opacity-80">
+      </form>
+    </div>
+
+</body>
+
+</html>
