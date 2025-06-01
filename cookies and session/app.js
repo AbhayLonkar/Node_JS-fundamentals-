@@ -9,17 +9,17 @@ const { authRoute } = require('./routes/authRoute');
 
 const { mongoose } = require('mongoose');
 const { mongoUri } = require('./utils/mongouri');
+const cookieParser = require('cookie-parser');
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded());
-
+app.use(cookieParser())
 
 app.use((req, res, next) => {
-  console.log('cookie check middleware', req.get('Cookie'));
-  console.log(req)
+  req.isLoggedIn = req.cookies.isLoggedIn === 'true' ? true : false;
   next();
 })
 

@@ -17,10 +17,16 @@
         class="<%= tab === 'editHome' ? 'bg-white/40' : '' %> hover:bg-white/40 hover:cursor-pointer px-3 h-9 flex items-center rounded-lg">
         <a href="/host/editHome">Edit Home</a>
       </li>
+      <li
+        class="<%= tab === 'logout' ? 'bg-white/40' : '' %> hover:bg-white/40 hover:cursor-pointer px-3 h-9 flex items-center rounded-lg">
+        <a href="/logout">Logout</a>
+      </li>
       <% } %>
-        <li
-          class="<%= tab === 'login' ? 'bg-white/40' : '' %> hover:bg-white/40 hover:cursor-pointer px-3 h-9 flex items-center rounded-lg">
-          <a href="/login">Login</a>
-        </li>
+        <% if(!isLoggedIn) { %>
+          <li
+            class="<%= tab === 'login' ? 'bg-white/40' : '' %> hover:bg-white/40 hover:cursor-pointer px-3 h-9 flex items-center rounded-lg">
+            <a href="/login">Login</a>
+          </li>
+          <% } %>
   </ul>
 </nav>
