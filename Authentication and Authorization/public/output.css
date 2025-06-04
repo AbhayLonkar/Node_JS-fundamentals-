@@ -187,9 +187,6 @@
   }
 }
 @layer utilities {
-  .m-3 {
-    margin: calc(var(--spacing) * 3);
-  }
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
@@ -207,9 +204,6 @@
   }
   .hidden {
     display: none;
-  }
-  .table {
-    display: table;
   }
   .size-2 {
     width: calc(var(--spacing) * 2);
@@ -233,15 +227,6 @@
   .h-max {
     height: max-content;
   }
-  .w-3 {
-    width: calc(var(--spacing) * 3);
-  }
-  .w-3\/5 {
-    width: calc(3/5 * 100%);
-  }
-  .w-4 {
-    width: calc(var(--spacing) * 4);
-  }
   .w-4\/5 {
     width: calc(4/5 * 100%);
   }
@@ -259,12 +244,6 @@
   }
   .w-full {
     width: 100%;
-  }
-  .border-collapse {
-    border-collapse: collapse;
-  }
-  .resize {
-    resize: both;
   }
   .flex-col {
     flex-direction: column;
@@ -299,13 +278,6 @@
   .rounded-md {
     border-radius: var(--radius-md);
   }
-  .rounded-sm {
-    border-radius: var(--radius-sm);
-  }
-  .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
-  }
   .border-2 {
     border-style: var(--tw-border-style);
     border-width: 2px;
@@ -321,9 +293,6 @@
   }
   .bg-red-600 {
     background-color: var(--color-red-600);
-  }
-  .bg-white {
-    background-color: var(--color-white);
   }
   .bg-white\/40 {
     background-color: color-mix(in srgb, #fff 40%, transparent);
@@ -421,9 +390,6 @@
   .uppercase {
     text-transform: uppercase;
   }
-  .underline {
-    text-decoration-line: underline;
-  }
   .shadow {
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -449,10 +415,6 @@
     @supports (color: color-mix(in lab, red, red)) {
       --tw-shadow-color: color-mix(in oklab, var(--color-gray-500) var(--tw-shadow-alpha), transparent);
     }
-  }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
   }
   .outline-0 {
     outline-style: var(--tw-outline-style);
@@ -494,11 +456,6 @@
   .md\:ml-10 {
     @media (width >= 48rem) {
       margin-left: calc(var(--spacing) * 10);
-    }
-  }
-  .md\:w-2xl {
-    @media (width >= 48rem) {
-      width: var(--container-2xl);
     }
   }
   .md\:w-3xl {
