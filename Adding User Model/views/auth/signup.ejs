@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Home</title>
+  <link rel="stylesheet" href="/output.css">
+</head>
+
+<body>
+  <%- include('../partials/nav.ejs', {tab: "signup" }) %>
+    <div class="flex justify-center items-center flex-col mt-20">
+
+      <h1 class="text-2xl text-blue-600 font-bold">Create your account</h1>
+
+      <form method="post" action="/signup"
+        class="md:w-xl w-full  h-max p-3 flex flex-col gap-5 mt-3 items-center rounded-lg">
+
+
+        <% if(errors && typeof errors !=undefined && errors.length> 0) { %>
+          <div class="w-4/5 p-2 bg-red-100 text-red-600 rounded-md">
+            <ul class="list-disc pl-5">
+              <% errors.forEach(error=> { %>
+                <li>
+                  <%= error %>
+                </li>
+                <% }) %>
+            </ul>
+          </div>
+          <% } %>
+
+            <input type="text" placeholder="Enter your Firstname" required
+              value="<%= oldInput.firstname ? oldInput.firstname : '' %>"
+              class="w-4/5 p-2 rounded-full border-2 border-blue-600 outline-0 shadow" name="firstname">
+            <input type="text" placeholder="Enter your Lastname"
+              value="<%= oldInput.lastname ? oldInput.lastname : '' %>" required
+              class="w-4/5 p-2 rounded-full border-2 border-blue-600 outline-0 shadow" name="lastname">
+            <input type="email" placeholder="Enter your email" required
+              value="<%= oldInput.email ? oldInput.email : '' %>"
+              class="w-4/5 p-2 rounded-full border-2 border-blue-600 outline-0 shadow" name="email">
+            <input type="password" placeholder="Enter your password" required
+              value="<%= oldInput.password ? oldInput.password : '' %>"
+              class="w-4/5 p-2 rounded-full border-2 border-blue-600 outline-0 shadow" name="password">
+            <input type="password" placeholder="Confirm your password" required
+              value="<%= oldInput.cpassword ? oldInput.cpassword : '' %>"
+              class="w-4/5 p-2 rounded-full border-2 border-blue-600 outline-0 shadow" name="cpassword">
+            <div>
+              <input type="radio" name="userType" id="host" value="host">
+              <label for="host" class="text-blue-600 font-semibold">Host</label>
+              <input type="radio" name="userType" id="regular" value="regular" checked>
+              <label for="regular" class="text-blue-600 font-semibold">Regular</label>
+
+            </div>
+            <input type="submit" value="Register"
+              class="p-2 px-5 rounded-md text-white uppercase bg-gradient-to-r from-blue-500 to-blue-600 shadow shadow-gray-400 hover:cursor-pointer hover:opacity-80">
+      </form>
+    </div>
+
+</body>
+
+</html>

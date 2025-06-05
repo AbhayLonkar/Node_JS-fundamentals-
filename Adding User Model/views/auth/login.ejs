@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Home</title>
+  <link rel="stylesheet" href="/output.css">
+</head>
+
+<body>
+  <%- include('../partials/nav.ejs', {tab: "login" }) %>
+    <div class="flex justify-center items-center flex-col mt-20">
+
+      <h1 class="text-2xl text-blue-600 font-bold">Login with your info</h1>
+
+      <form method="post" action="/login"
+        class="md:w-xl w-full  h-max p-3 flex flex-col gap-5 mt-3 items-center rounded-lg">
+        <input type="text" placeholder="Enter your email" required
+          class="w-4/5 p-2 rounded-full border-2 border-blue-600 outline-0 shadow" name="email">
+        <input type="password" placeholder="Enter your password" required
+          class="w-4/5 p-2 rounded-full border-2 border-blue-600 outline-0 shadow" name="password">
+        <input type="submit" value="submit"
+          class="p-2 px-5 rounded-md text-white uppercase bg-gradient-to-r from-blue-500 to-blue-600 shadow shadow-gray-400 hover:cursor-pointer hover:opacity-80">
+      </form>
+    </div>
+
+</body>
+
+</html>
