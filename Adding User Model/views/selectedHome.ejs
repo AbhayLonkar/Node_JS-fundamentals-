@@ -8,36 +8,39 @@
   <link rel="stylesheet" href="/output.css">
 </head>
 
-<body class="h-dvh bg-gray-50">
+<body class="bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen">
   <%- include('./partials/nav.ejs',{tab : "home" }) %>
 
+    <div class="flex justify-center items-center flex-col mt-24 w-full p-5 pb-10">
+      <h1 class="text-3xl text-blue-700 font-extrabold tracking-tight mb-6 w-full text-center uppercase">
+        This is your selected Home
+      </h1>
 
-    <div class="flex justify-center items-center flex-col mt-20 w-full p-5 pb-10 ">
-      <h1 class="text-2xl text-blue-600 font-bold mb-5 w-full text-center uppercase">This is your selected Home</h1>
-
-      <div class="shadow shadow-gray-500 h-max p-3  flex gap-3 justify-center rounded-lg flex-wrap w-[400px]">
-        <div>
-          <img src="<%= house.photoUrl %>" alt="house image" class="w-full h-60 object-cover rounded-lg">
+      <div
+        class="bg-white shadow-xl rounded-2xl px-8 py-8 w-full max-w-md flex flex-col items-center gap-6 border border-blue-100">
+        <div class="w-full">
+          <img src="<%= house.photoUrl %>" alt="house image" class="w-full h-60 object-cover rounded-lg shadow">
         </div>
         <div class="font-semibold w-full">
-          <p class="text-xl">
+          <p class="text-2xl text-blue-800 mb-2">
             <%= house.title %>
           </p>
-          <div class="flex justify-between items-center w-full">
-            <p class="text-xl text-green-600 ">
+          <div class="flex justify-between items-center w-full mb-2">
+            <p class="text-xl text-green-600 font-bold">
               Rs.<%= house.price %>
             </p>
-            <p
-              class="text-xs font-bold flex justify-center items-center text-white bg-gradient-to-r from-blue-500 to-blue-600 rounded-full p-2 size-2">
-              <%= house.rating %>
-            </p>
+            <span class="flex items-center gap-1">
+              <span class="text-yellow-400 text-lg">★</span>
+              <span class="text-blue-700 font-bold text-lg">
+                <%= house.rating %>
+              </span>
+            </span>
           </div>
         </div>
-        <div>
-          <p>No more info available</p>
+        <div class="w-full">
+          <p class="text-gray-500 text-center">No more info available</p>
         </div>
       </div>
-
     </div>
 
 </body>
