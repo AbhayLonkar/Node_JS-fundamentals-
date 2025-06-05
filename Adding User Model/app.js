@@ -1,5 +1,5 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
+// const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 
@@ -31,7 +31,7 @@ app.use(session({
   store: store,
 }));
 
-app.use(cookieParser())
+// app.use(cookieParser())
 
 app.use((req, res, next) => {
   req.isLoggedIn = req.session.isLoggedIn;

@@ -4,27 +4,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Home</title>
+  <title>Login | Add Home</title>
   <link rel="stylesheet" href="/output.css">
 </head>
 
-<body>
+<body class="bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen">
   <%- include('../partials/nav.ejs', {tab: "login" }) %>
-    <div class="flex justify-center items-center flex-col mt-20">
-
-      <h1 class="text-2xl text-blue-600 font-bold">Login with your info</h1>
-
-      <form method="post" action="/login"
-        class="md:w-xl w-full  h-max p-3 flex flex-col gap-5 mt-3 items-center rounded-lg">
-        <input type="text" placeholder="Enter your email" required
-          class="w-4/5 p-2 rounded-full border-2 border-blue-600 outline-0 shadow" name="email">
-        <input type="password" placeholder="Enter your password" required
-          class="w-4/5 p-2 rounded-full border-2 border-blue-600 outline-0 shadow" name="password">
-        <input type="submit" value="submit"
-          class="p-2 px-5 rounded-md text-white uppercase bg-gradient-to-r from-blue-500 to-blue-600 shadow shadow-gray-400 hover:cursor-pointer hover:opacity-80">
-      </form>
+    <div class="flex justify-center items-center flex-col mt-24">
+      <div
+        class="bg-white shadow-xl rounded-2xl px-8 py-10 w-full max-w-md flex flex-col items-center gap-6 border border-blue-100">
+        <h1 class="text-3xl text-blue-700 font-extrabold tracking-tight mb-2">Sign In</h1>
+        <p class="text-gray-500 text-center mb-2">Welcome back! Please enter your credentials to continue.</p>
+        <form method="post" action="/login" class="w-full flex flex-col gap-5 items-center">
+          <% if(errors && typeof errors !=undefined && errors.length> 0) { %>
+            <div class="w-full p-3 bg-red-50 text-red-700 rounded-lg border border-red-200 mb-2">
+              <ul class="list-disc pl-5 text-sm">
+                <% errors.forEach(error=> { %>
+                  <li>
+                    <%= error %>
+                  </li>
+                  <% }) %>
+              </ul>
+            </div>
+            <% } %>
+              <input type="email" placeholder="Email address" required
+                class="w-full p-3 rounded-lg border border-blue-300 focus:border-blue-500 outline-none shadow-sm transition"
+                name="email" autocomplete="email">
+              <input type="password" placeholder="Password" required
+                class="w-full p-3 rounded-lg border border-blue-300 focus:border-blue-500 outline-none shadow-sm transition"
+                name="password" autocomplete="current-password">
+              <input type="submit" value="Sign In"
+                class="w-full p-3 rounded-lg text-white font-semibold uppercase bg-gradient-to-r from-blue-500 to-blue-700 shadow hover:opacity-90 transition cursor-pointer">
+        </form>
+        <div class="w-full flex justify-between mt-2 text-sm">
+          <a href="/register" class="text-blue-600 hover:underline">Create an account</a>
+          <a href="/forgot-password" class="text-blue-400 hover:underline">Forgot password?</a>
+        </div>
+      </div>
     </div>
-
 </body>
 
 </html>

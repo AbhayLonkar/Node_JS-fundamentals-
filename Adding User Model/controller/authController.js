@@ -3,7 +3,10 @@ const bcrypt = require('bcryptjs');
 const User = require('../model/user');
 
 exports.getLogin = (req, res, next) => {
-  res.render('auth/login', { isLoggedIn: false });
+  res.render('auth/login', {
+    isLoggedIn: false,
+    errors: []
+  });
 }
 exports.signup = (req, res, next) => {
   res.render('auth/signup', {
@@ -20,9 +23,28 @@ exports.signup = (req, res, next) => {
   });
 }
 
-exports.postLogin = (req, res, next) => {
+exports.postLogin = async (req, res, next) => {
+  const { email, password } = req.body
+
+  const user = await User.findOne({ email });
+  if (!user) {
+    return res.status(422).render('auth/login', {
+      isLoggedIn: false,
+      errors: ['Bad User Credentials'],
+    });
+  }
+
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) {
+    return res.status(422).render('auth/login', {
+      isLoggedIn: false,
+      errors: ['Incorrect Password'],
+    });
+  }
 
   req.session.isLoggedIn = true;
+  req.session.user = user;
+  await req.session.save();
   res.redirect('/');
 }
 
@@ -102,7 +124,15 @@ exports.postSignup = [
       res.redirect('/login');
     }).catch(err => {
       return res.render('auth/signup', {
-        isLoggedIn: false, errors: [err.message], firstname, lastname, email, password, cpassword, userType
+        isLoggedIn: false, errors: [err.message],
+        oldInput: {
+          firstname,
+          lastname,
+          email,
+          password,
+          cpassword,
+          userType
+        }
       });
     })
   }
