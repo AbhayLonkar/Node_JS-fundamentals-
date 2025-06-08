@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Home</title>
+  <link rel="stylesheet" href="/output.css">
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen">
+  <%- include('../partials/nav.ejs', {tab: "signup" }) %>
+    <div class="flex justify-center items-center flex-col mt-8">
+      <div
+        class="bg-white shadow-xl rounded-2xl px-8 py-10 w-full max-w-md flex flex-col items-center gap-6 border border-blue-100">
+        <h1 class="text-3xl text-blue-700 font-extrabold tracking-tight mb-2">Create your account</h1>
+        <form method="post" action="/signup" class="w-full flex flex-col gap-3 items-center">
+          <% if(errors && typeof errors !=undefined && errors.length> 0) { %>
+            <div class="w-full p-3 bg-red-50 text-red-700 rounded-lg border border-red-200 mb-2">
+              <ul class="list-disc pl-5 text-sm">
+                <% errors.forEach(error=> { %>
+                  <li>
+                    <%= error %>
+                  </li>
+                  <% }) %>
+              </ul>
+            </div>
+            <% } %>
+              <input type="text" placeholder="First name" required
+                value="<%= oldInput.firstname ? oldInput.firstname : '' %>"
+                class="w-full p-3 rounded-lg border border-blue-300 focus:border-blue-500 outline-none shadow-sm transition"
+                name="firstname">
+              <input type="text" placeholder="Last name" required
+                value="<%= oldInput.lastname ? oldInput.lastname : '' %>"
+                class="w-full p-3 rounded-lg border border-blue-300 focus:border-blue-500 outline-none shadow-sm transition"
+                name="lastname">
+              <input type="email" placeholder="Email address" required
+                value="<%= oldInput.email ? oldInput.email : '' %>"
+                class="w-full p-3 rounded-lg border border-blue-300 focus:border-blue-500 outline-none shadow-sm transition"
+                name="email" autocomplete="email">
+              <input type="password" placeholder="Password" required
+                value="<%= oldInput.password ? oldInput.password : '' %>"
+                class="w-full p-3 rounded-lg border border-blue-300 focus:border-blue-500 outline-none shadow-sm transition"
+                name="password" autocomplete="new-password">
+              <input type="password" placeholder="Confirm password" required
+                value="<%= oldInput.cpassword ? oldInput.cpassword : '' %>"
+                class="w-full p-3 rounded-lg border border-blue-300 focus:border-blue-500 outline-none shadow-sm transition"
+                name="cpassword" autocomplete="new-password">
+              <div class="w-full flex justify-center gap-6 mt-2">
+                <label class="flex items-center gap-2 text-blue-600 font-semibold cursor-pointer">
+                  <input type="radio" name="userType" id="host" value="host" <%=oldInput.userType==='host' ? 'checked'
+                    : '' %>>
+                  Host
+                </label>
+                <label class="flex items-center gap-2 text-blue-600 font-semibold cursor-pointer">
+                  <input type="radio" name="userType" id="regular" value="regular" <%=!oldInput.userType ||
+                    oldInput.userType==='regular' ? 'checked' : '' %>>
+                  Regular
+                </label>
+              </div>
+              <input type="submit" value="Register"
+                class="w-full p-3 rounded-lg text-white font-semibold uppercase bg-gradient-to-r from-blue-500 to-blue-700 shadow hover:opacity-90 transition cursor-pointer">
+        </form>
+        <div class="w-full flex justify-between mt-2 text-sm">
+          <a href="/login" class="text-blue-600 hover:underline">Already have an account?</a>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>
