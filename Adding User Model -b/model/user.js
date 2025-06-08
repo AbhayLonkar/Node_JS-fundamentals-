@@ -22,7 +22,11 @@ const userShcema = new mongoose.Schema({
     type: String,
     enum: ['host', 'regular'],
     default: 'regular'
-  }
+  },
+  favourites: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Home',
+  }]
 });
 
 
