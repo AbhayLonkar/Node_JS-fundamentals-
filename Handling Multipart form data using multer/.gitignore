@@ -1,4 +1,3 @@
 # ignore this file
 */node_modules/*
-timestamp.txt
-*.mp4
+**/utils/mongouri.js 
