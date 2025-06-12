@@ -13,6 +13,7 @@ exports.initalReq = (req, res, next) => {
 };
 
 exports.getAddHome = (req, res, next) => {
+<<<<<<< HEAD
   res.render("addHome", { tab: 'addHome', isLoggedIn: req.isLoggedIn, user: req.session.user, errors: [] });
 };
 
@@ -25,6 +26,16 @@ exports.postAddHome = (req, res, next) => {
   console.log(req.file);
   let home = new Home({ title, price, rating, photo: photo.path });
   console.log(home);
+=======
+  res.render("addHome", { tab: 'addHome', isLoggedIn: req.isLoggedIn, user: req.session.user, });
+};
+
+exports.postAddHome = (req, res, next) => {
+  const { title, price, rating, photo } = req.body;
+  console.log(title, price, rating, photo);
+  console.log(req.file);
+  let home = new Home({ title, price, rating, photo: req.file.path });
+>>>>>>> ad316ab243584f617a4814f6db83bd1dc1d30a1b
   home.save().then(() => {
     res.render("addHomeSuccess", { tab: 'addHome', isLoggedIn: req.isLoggedIn, user: req.session.user, });
   })

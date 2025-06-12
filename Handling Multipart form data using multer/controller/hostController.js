@@ -25,6 +25,7 @@ exports.postDeleteHome = (req, res, next) => {
 }
 
 exports.postEditHomeSuccess = (req, res, next) => {
+<<<<<<< HEAD
   const { id, title, price, rating, oldPhoto } = req.body;
   var { photo } = req.body;
   if (!req.file) {
@@ -32,6 +33,9 @@ exports.postEditHomeSuccess = (req, res, next) => {
   } else {
     photo = req.file.path;
   }
+=======
+  const { id, title, price, rating, photo } = req.body;
+>>>>>>> ad316ab243584f617a4814f6db83bd1dc1d30a1b
   Home.findById(id)
     .then(home => {
       home.title = title;

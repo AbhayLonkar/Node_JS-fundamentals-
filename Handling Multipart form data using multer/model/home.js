@@ -15,7 +15,10 @@ const homeSchema = new mongoose.Schema({
   },
   photo: {
     type: String,
+<<<<<<< HEAD
     // required: true
+=======
+>>>>>>> ad316ab243584f617a4814f6db83bd1dc1d30a1b
   }
 });
 
