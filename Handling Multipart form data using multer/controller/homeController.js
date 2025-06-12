@@ -13,13 +13,19 @@ exports.initalReq = (req, res, next) => {
 };
 
 exports.getAddHome = (req, res, next) => {
-  res.render("addHome", { tab: 'addHome', isLoggedIn: req.isLoggedIn, user: req.session.user, });
+  res.render("addHome", { tab: 'addHome', isLoggedIn: req.isLoggedIn, user: req.session.user, errorMessage: null, });
 };
 
 exports.postAddHome = (req, res, next) => {
   const { title, price, rating, photo } = req.body;
-  console.log(title, price, rating, photo);
-  console.log(req.file);
+  if (!req.file) {
+    return res.status(422).render('addHome', {
+      errorMessage: 'Please upload a valid image (jpg/jpeg) file.',
+      tab: 'addHome',
+      isLoggedIn: req.isLoggedIn,
+      user: req.session.user,
+    });
+  }
   let home = new Home({ title, price, rating, photo: req.file.path });
   home.save().then(() => {
     res.render("addHomeSuccess", { tab: 'addHome', isLoggedIn: req.isLoggedIn, user: req.session.user, });

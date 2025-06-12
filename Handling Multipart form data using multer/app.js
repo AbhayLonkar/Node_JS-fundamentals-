@@ -40,9 +40,17 @@ const storage = multer.diskStorage({
   }
 })
 
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+}
 
 const multerOption = {
   storage: storage,
+  fileFilter: fileFilter,
 }
 
 app.use(express.static(path.join(__dirname, 'public')))
