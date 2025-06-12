@@ -17,8 +17,10 @@ exports.getAddHome = (req, res, next) => {
 };
 
 exports.postAddHome = (req, res, next) => {
-  const { title, price, rating, photoUrl } = req.body;
-  let home = new Home({ title, price, rating, photoUrl });
+  const { title, price, rating, photo } = req.body;
+  console.log(title, price, rating, photo);
+  console.log(req.file);
+  let home = new Home({ title, price, rating, photo: req.file.path });
   home.save().then(() => {
     res.render("addHomeSuccess", { tab: 'addHome', isLoggedIn: req.isLoggedIn, user: req.session.user, });
   })

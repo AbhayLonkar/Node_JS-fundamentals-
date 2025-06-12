@@ -19,8 +19,7 @@
           <% registeredHouses.forEach(house=> { %>
             <div
               class="bg-white border border-blue-100 shadow-xl rounded-2xl p-5 w-72 flex flex-col items-center gap-4 transition hover:scale-105 hover:shadow-2xl duration-300">
-              <img src="<%= house.photoUrl %>" class="w-full h-44 object-cover rounded-lg shadow"
-                alt="<%= house.title %>">
+              <img src="<%= house.photo %>" class="w-full h-44 object-cover rounded-lg shadow" alt="<%= house.title %>">
               <p class="text-xl text-blue-800 font-bold text-center">
                 <%= house.title %>
               </p>

@@ -1,7 +1,7 @@
 const express = require('express');
-// const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
+const multer = require("multer");
 
 const app = express();
 const path = require('path');
@@ -22,8 +22,32 @@ const store = new MongoDBStore({
   collection: 'sessions'
 });
 
+const randomString = (length) => {
+  const character = "abcdefghijklmnopqrstuvwxyz";
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += character.charAt(Math.floor(Math.random() * character.length));
+  }
+  return result;
+}
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, randomString(10) + '-' + file.originalname);
+  }
+})
+
+
+const multerOption = {
+  storage: storage,
+}
+
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded());
+app.use(multer(multerOption).single('photo'));
 app.use(session({
   secret: 'Complete NodeJS',
   resave: false,
@@ -31,7 +55,6 @@ app.use(session({
   store: store,
 }));
 
-// app.use(cookieParser())
 
 app.use((req, res, next) => {
   req.isLoggedIn = req.session.isLoggedIn;

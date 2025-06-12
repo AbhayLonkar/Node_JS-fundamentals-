@@ -13,10 +13,6 @@
       <% if(isLoggedIn) { %>
         <% if(user?.userType=="regular" ) { %>
           <li
-            class="<%= tab === 'addHome' ? 'bg-white/30 text-blue-800 shadow' : 'text-white' %> hover:bg-white/30 hover:text-blue-800 hover:shadow px-4 h-10 flex items-center rounded-lg transition-all duration-150">
-            <a href="/add-home">Add Home</a>
-          </li>
-          <li
             class="<%= tab === 'fav' ? 'bg-white/30 text-blue-800 shadow' : 'text-white' %> hover:bg-white/30 hover:text-blue-800 hover:shadow px-4 h-10 flex items-center rounded-lg transition-all duration-150">
             <a href="/fav">Favorites</a>
           </li>
@@ -28,6 +24,10 @@
               </li>
               <% } %>
 
+                <li
+                  class="<%= tab === 'addHome' ? 'bg-white/30 text-blue-800 shadow' : 'text-white' %> hover:bg-white/30 hover:text-blue-800 hover:shadow px-4 h-10 flex items-center rounded-lg transition-all duration-150">
+                  <a href="/add-home">Add Home</a>
+                </li>
                 <li
                   class="<%= tab === 'logout' ? 'bg-white/30 text-blue-800 shadow' : 'text-white' %> hover:bg-white/30 hover:text-blue-800 hover:shadow px-4 h-10 flex items-center rounded-lg transition-all duration-150">
                   <a href="/logout">Logout</a>

@@ -25,13 +25,13 @@ exports.postDeleteHome = (req, res, next) => {
 }
 
 exports.postEditHomeSuccess = (req, res, next) => {
-  const { id, title, price, rating, photoUrl } = req.body;
+  const { id, title, price, rating, photo } = req.body;
   Home.findById(id)
     .then(home => {
       home.title = title;
       home.price = price;
       home.rating = rating;
-      home.photoUrl = photoUrl;
+      home.photo = photo;
       home.save().then(() => {
         res.render('./host/editHomeSuccess', { tab: "addHome", isLoggedIn: req.isLoggedIn, user: req.session.user, });
       })
