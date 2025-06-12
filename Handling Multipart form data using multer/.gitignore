@@ -1,7 +1,5 @@
 # ignore this file
 */node_modules/*
 **/utils/mongouri.js 
-<<<<<<< HEAD
-=======
 uploads/*
->>>>>>> ad316ab243584f617a4814f6db83bd1dc1d30a1b
+!uploads/.gitkeep
