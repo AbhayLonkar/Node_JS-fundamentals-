@@ -21,6 +21,7 @@ exports.postDeleteHome = (req, res, next) => {
   const id = req.body.id;
   Home.findByIdAndDelete(id)
     .then(() => {
+      fs.unlinkSync(path.join(rootDir, req.body.photo));
       res.redirect('/host/editHome')
     })
     .catch(err => {
