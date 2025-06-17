@@ -11,9 +11,9 @@ export const addItemToServer = async (task, date) => {
 }
 
 export const getItemFromServer = async () => {
-  const response = await fetch('http://localhost:300/api/');
+  const response = await fetch('http://localhost:3000/api/', { method: "GET" });
   const items = await response.json();
-  return mapServerItemsToLocalItems(items);
+  return items.map(mapServerItemsToLocalItems);
 }
 
 export const markItemCompleted = async (id) => {
@@ -25,11 +25,10 @@ export const markItemCompleted = async (id) => {
 }
 
 export const deleteItem = async (id) => {
-  const response = await fetch(`http://localhost:3000/${id}`, {
-    method: "DELETE",
+  await fetch(`http://localhost:3000/api/delete/${id}`, {
+    method: "delete",
   });
-  const item = response.json();
-  return item._id;
+  return id;
 }
 
 const mapServerItemsToLocalItems = (item) => {

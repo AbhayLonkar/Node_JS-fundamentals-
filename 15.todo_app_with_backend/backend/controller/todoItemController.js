@@ -22,7 +22,7 @@ exports.getItem = async (req, res, next) => {
 
 exports.deleteItem = async (req, res, next) => {
   const { id } = req.params;
-  await TODO.findByIdAndDelete({ id });
+  await TODO.findByIdAndDelete(id);
   res.status(204).json({ _id: id });
 };
 

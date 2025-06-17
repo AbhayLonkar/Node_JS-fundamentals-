@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 
-app.use('/api/create', todoItemRouter)
+app.use('/api', todoItemRouter)
 
 app.use((req, res, next) => {
   res.status(404);
