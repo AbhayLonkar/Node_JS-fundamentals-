@@ -6,7 +6,7 @@ const path = require('path');
 
 const { mongoose } = require('mongoose');
 const { mongoUri } = require('./utils/mongouri');
-const { createRoute } = require('./routes/createRoute');
+const { todoItemRouter } = require('./routes/todoItemRouter');
 
 app.use(cors({
   origin: '*',
@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 
-app.use('/api/create', createRoute)
+app.use('/api/create', todoItemRouter)
 
 app.use((req, res, next) => {
   res.status(404);
