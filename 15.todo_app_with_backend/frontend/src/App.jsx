@@ -16,10 +16,7 @@ function App() {
   }, []);
 
   const handleNewItem = async (itemName, itemDueDate) => {
-
     const response = await addItemToServer(itemName, itemDueDate);
-    console.log("Response from server:", response);
-    console.log(`New Item Added: ${itemName} Date:${itemDueDate}`);
     const newTodoItems = [
       ...todoItems,
       response,
@@ -34,15 +31,19 @@ function App() {
   };
 
   return (
-    <center className="todo-container">
-      <AppName />
-      <AddTodo onNewItem={handleNewItem} />
-      {todoItems.length === 0 && <WelcomeMessage></WelcomeMessage>}
-      <TodoItems
-        todoItems={todoItems}
-        onDeleteClick={handleDeleteItem}
-      ></TodoItems>
-    </center>
+    <div className="app-bg">
+      <main className="todo-wrapper">
+        <section className="todo-card">
+          <AppName />
+          <AddTodo onNewItem={handleNewItem} />
+          {todoItems.length === 0 && <WelcomeMessage />}
+          <TodoItems
+            todoItems={todoItems}
+            onDeleteClick={handleDeleteItem}
+          />
+        </section>
+      </main>
+    </div>
   );
 }
 
